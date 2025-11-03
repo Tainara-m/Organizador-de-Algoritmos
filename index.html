@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organizador de Algoritmos</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+<link rel="manifest" href="./assets/site.webmanifest">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title">
+        <div class="logo" aria-hidden="true"><img src="./assets/logo-png.png" alt=""></div>
+        <div>
+          <div class="h1">Organizador de Algoritmos</div>
+          <div class="muted" id="muted1">Arraste os cards para montar o algoritmo.</div>
+        </div>
+      </div>
+<button id="themeToggle" type="button" aria-pressed="false">🌙</button>
+    </header>
+
+    <div class="panel">
+      <div class="toolbar">
+        <div class="controls wrap">
+          <label class="sr-only" for="category">Categoria</label>
+          <label class="sr-only" for="challenge">Tarefa</label>
+          <select id="challenge" title="Selecionar tarefa"></select>
+
+          <input id="search" type="search" placeholder="Pesquisar tarefa..." />
+        </div>
+
+        <div class="controls">
+          <button id="shuffle" class="btn-ghost">Embaralhar</button>
+          <button id="clear" class="btn-ghost">Limpar</button>
+          <button id="check" class="btn-primary">Verificar</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="col">
+          <h2>Descrição</h2>
+          <div id="description" class="notice hint"></div>
+
+          <h2>Cards disponíveis</h2>
+          <div id="cards" class="cards" role="list" aria-label="Cards disponíveis"></div>
+        </section>
+
+        <section class="col">
+          <h2>Monte a sequência</h2>
+          <div id="slots" class="slots" aria-label="Área para montar a sequência"></div>
+
+          <div style="height:8px"></div>
+          <div id="feedback" class="notice" style="display:none"></div>
+
+          <h2>Pré-visualização</h2>
+          <pre id="preview" class="preview muted">Em tarefas SEQUENCIAIS, a pré-visualização fica desativada</pre>
+        </section>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px">
+      <div class="toolbar">
+        <div class="controls wrap">
+          <h2>Biblioteca de tarefas</h2>
+          <button id="addTaskBtn" class="btn-ghost">Nova tarefa</button>
+          <button id="exportBtn" class="btn-ghost">Exportar JSON</button>
+          <button id="exportEmbedBtn" class="btn-ghost">Baixar biblioteca .js</button>
+          <button id="clearStorageBtn" class="btn-ghost">Limpar dados salvos</button>
+          <input id="importFile" type="file" accept="application/json" style="display:none" />
+          <span id="libStatus" class="muted"></span>
+        </div>
+      </div>
+</div>
+      <!-- Modal: formulário de nova tarefa -->
+<div id="taskModal" class="modal" hidden>
+  <div class="modal-content panel" role="dialog" aria-modal="true" aria-labelledby="taskModalTitle">
+    <h3 id="taskModalTitle" class="h1" style="margin-top:0">Nova tarefa</h3>
+
+    <form id="taskForm" class="task-form" autocomplete="off">
+      <div class="form-row">
+        <label for="tf_title">Título</label>
+        <input id="tf_title" type="text" placeholder="Ex.: Fazer suco natural" required />
+      </div>
+
+      <div class="form-row">
+        <label for="tf_category">Categoria</label>
+        <select id="tf_category" required>
+          <option value="pseudocode">Pseudocódigo</option>
+          <option value="sequential">Sequencial (sem pseudocódigo)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="tf_description">Descrição</label>
+        <textarea id="tf_description" rows="3" placeholder="Explique o objetivo da tarefa"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="tf_cards">Cards (um por linha)</label>
+        <textarea id="tf_cards" rows="6" placeholder="pegar copo&#10;lavar fruta&#10;cortar fruta&#10;bater com água&#10;servir"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="tf_solution">Ordem correta (índices 1..N separados por vírgula)</label>
+        <input id="tf_solution" type="text" placeholder="Ex.: 2,3,4,5,1 (opcional; vazio = 1..N)" />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Salvar</button>
+        <button type="button" id="cancelTask" class="btn-ghost">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: confirmação -->
+<div id="confirmModal" class="modal" hidden>
+  <div class="modal-content panel" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <h3 id="confirmTitle" class="h1" style="margin-top:0">Confirmar inclusão</h3>
+    <p id="confirmSummary" class="muted" style="margin:8px 0 16px"></p>
+    <div class="modal-actions">
+      <button id="confirmYes" class="btn-primary">Confirmar</button>
+      <button id="confirmNo" class="btn-ghost">Voltar</button>
+    </div>
+  </div>
+</div>
+<footer  class="muted">
+      <div>Desenvolvido por Tainara Martins • Software didático • 2025 </div>
+</footer>
+    <script src="biblioteca.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
