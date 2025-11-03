@@ -4,8 +4,6 @@ App web para treinar **lógica de programação** organizando passos em **cards*
 Separe as tarefas por **Pseudocódigo** (com pré-visualização automática do algoritmo) ou **Sequencial** (execução passo a passo).  
 Inclui **tema claro/escuro**, **atalhos de teclado**, **acessibilidade**, **importar/exportar biblioteca**, e **criador de tarefas** com modal de confirmação.
 
-![screenshot placeholder](./assets/screenshot.png)
-
 ---
 
 ## ✨ Recursos
@@ -50,15 +48,10 @@ Inclui **tema claro/escuro**, **atalhos de teclado**, **acessibilidade**, **impo
 
 ## 🗂️ Estrutura (essencial)
 /assets
-favicon-16x16.png
-favicon-32x32.png
-apple-touch-icon.png
-screenshot.png (opcional)
-
-index.html
-styles.css
-script.js
-biblioteca.js (opcional, gerado pelo app)
+  index.html
+  styles.css
+  script.js
+  biblioteca.js (opcional, gerado pelo app)
 
 
 > Se usar `biblioteca.js`, ele deve definir `window.EMBEDDED_TASKS = [ ... ]`.  
